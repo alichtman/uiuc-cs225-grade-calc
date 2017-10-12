@@ -208,6 +208,7 @@ void getGradeInformation(Student &pStudent) {
 
 /**
  * Function to set num of decimal places for x
+ * CREDIT : https://stackoverflow.com/questions/1343890/rounding-number-to-2-decimal-places-in-c
  */
 double formatPctage(const double &x, const int &numDecimals) {
   int y = x;
