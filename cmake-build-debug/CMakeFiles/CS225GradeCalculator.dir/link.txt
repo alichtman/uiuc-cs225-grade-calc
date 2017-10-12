@@ -1,1 +1,0 @@
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  -g -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/CS225GradeCalculator.dir/main.cpp.o CMakeFiles/CS225GradeCalculator.dir/graphics.cpp.o  -o CS225GradeCalculator 
