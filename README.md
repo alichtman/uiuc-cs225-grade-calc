@@ -9,5 +9,6 @@ Project Files:
   `graphics.cpp`
   `Makefile`
   
-  
-I apologize for the terrible github organization.
+Written by: Aaron Lichtman
+
+Contributors: Michael Usachenko
