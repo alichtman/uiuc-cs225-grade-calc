@@ -1,5 +1,6 @@
 #include <iostream>
 #include <iomanip>
+#include <complex>
 #include "graphics.h"
 
 using namespace std;
@@ -206,16 +207,41 @@ void getGradeInformation(Student &pStudent) {
 }
 
 /**
+ * Function to set num of decimal places for x
+ */
+double formatPctage(const double &x, const int &numDecimals) {
+  int y = x;
+  double z= x-y;
+  double m=pow(10,numDecimals);
+  double q=z*m;
+  double r=round(q);
+  return static_cast<double>(y)+(1.0/m)*r;
+}
+
+/**
  * Prints student grade in nice table format
  * @param student
  */
 void printGradeInfo(Student student) {
 
+  double mpScore = student.getMpTotal();
+  double mpPct = 100 * mpScore / 130;
+
+  double labScore = student.getLabTotal();
+  double labPct = 100 * labScore / 100;
+
+  double theoryScore = student.getTheoryExamTotal();
+  double theoryPct = 100 * theoryScore / 280;
+
+  double programmingScore = student.getProgrammingExamTotal();
+  double programmingPct = 100 * programmingScore / 240;
+
+
   cout << " -- Grading Information Entered -- " << endl;
-  cout << left << setw(20) << "\t  MPs " << right << setw(5) << student.getMpTotal() << endl;
-  cout << left << setw(20) << "\t  Labs " << right << setw(5) << student.getLabTotal() << endl;
-  cout << left << setw(20) << "\t  Theory Quizzes " << right << setw(5) << student.getTheoryExamTotal() << endl;
-  cout << left << setw(20) << "\t  Coding Quizzes " << right << setw(5) << student.getProgrammingExamTotal() << endl;
+  cout << left << setw(20) << "\t  MPs " << right << setw(5) << mpScore << right << setw(5) << "(" << formatPctage(mpPct, 2) << "%)" << endl;
+  cout << left << setw(20) << "\t  Labs " << right << setw(5) << labScore << right  << setw(5) <<  "(" << formatPctage(labPct, 2) << "%)" << endl;
+  cout << left << setw(20) << "\t  Theory Quizzes " << right << setw(5) << theoryScore << right << setw(5) << "(" << formatPctage(theoryPct, 2) << "%)" << endl;
+  cout << left << setw(20) << "\t  Coding Quizzes " << right << setw(5) << programmingScore << right << setw(5) << "(" << formatPctage(programmingPct, 2) << "%)" << endl;
   cout << left << setw(20) << "\t  Extra Credit " << right << setw(5) << student.getExtraCredit() << "\n" << endl;
   cout << left << setw(20) << "\t  Final Exam   " << right << setw(5) << "???" << "\n" << endl;
   cout << right << setw(20) << "\t  Current Total : \t" << student.calculateTotalPoints() << "\n" << endl;
