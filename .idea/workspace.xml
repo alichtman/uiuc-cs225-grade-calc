@@ -15,7 +15,6 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CS225GradeCalculator.dir/graphics.cpp.o" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CS225GradeCalculator.dir/graphics.cpp.o" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CS225GradeCalculator" afterPath="$PROJECT_DIR$/cmake-build-debug/CS225GradeCalculator" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.cpp" afterPath="$PROJECT_DIR$/main.cpp" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -303,7 +302,7 @@
       <updated>1507787785936</updated>
       <workItem from="1507787787569" duration="13072000" />
       <workItem from="1507814290684" duration="12000" />
-      <workItem from="1507839783918" duration="2826000" />
+      <workItem from="1507839783918" duration="2856000" />
     </task>
     <task id="LOCAL-00001" summary="Finished logic for calculating final grade. Formatting fixes. Logic still needs to be tested.">
       <created>1507811651893</created>
@@ -326,11 +325,18 @@
       <option name="project" value="LOCAL" />
       <updated>1507842050551</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Formatting grading info">
+      <created>1507843106308</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1507843106308</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15910000" />
+    <option name="totallyTimeSpent" value="15940000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="821" extended-state="0" />
@@ -366,7 +372,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Finished logic for calculating final grade. Formatting fixes. Logic still needs to be tested." />
     <MESSAGE value="Attempted to create a Makefile but it's not functioning atm. TODO**" />
-    <option name="LAST_COMMIT_MESSAGE" value="Attempted to create a Makefile but it's not functioning atm. TODO**" />
+    <MESSAGE value="Formatting grading info" />
+    <option name="LAST_COMMIT_MESSAGE" value="Formatting grading info" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
