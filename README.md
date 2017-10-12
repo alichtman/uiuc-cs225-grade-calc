@@ -1,5 +1,5 @@
 # CS225GradeCalculator
-Calculate needed final exam grade to earn desired grade in CS225 at UIUC Fall 2017
+Calculate final exam grade needed to earn certain grade in CS225 at UIUC Fall 2017
 
 
 Project Files:
@@ -10,5 +10,3 @@ Project Files:
   `Makefile`
   
 Written by: Aaron Lichtman
-
-Contributors: Michael Usachenko
