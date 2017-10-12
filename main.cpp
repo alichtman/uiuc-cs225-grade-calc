@@ -239,13 +239,12 @@ void printGradeInfo(Student student) {
 
 
   cout << " -- Grading Information Entered -- " << endl;
-  cout << left << setw(20) << "\t  MPs " << right << setw(5) << mpScore << right << setw(5) << "(" << formatPctage(mpPct, 2) << "%)" << endl;
-  cout << left << setw(20) << "\t  Labs " << right << setw(5) << labScore << right  << setw(5) <<  "(" << formatPctage(labPct, 2) << "%)" << endl;
-  cout << left << setw(20) << "\t  Theory Quizzes " << right << setw(5) << theoryScore << right << setw(5) << "(" << formatPctage(theoryPct, 2) << "%)" << endl;
-  cout << left << setw(20) << "\t  Coding Quizzes " << right << setw(5) << programmingScore << right << setw(5) << "(" << formatPctage(programmingPct, 2) << "%)" << endl;
-  cout << left << setw(20) << "\t  Extra Credit " << right << setw(5) << student.getExtraCredit() << "\n" << endl;
-  cout << left << setw(20) << "\t  Final Exam   " << right << setw(5) << "???" << "\n" << endl;
-  cout << right << setw(20) << "\t  Current Total : \t" << student.calculateTotalPoints() << "\n" << endl;
+  cout << left << setw(20) << "  MPs " << right << setw(5) << mpScore << right << setw(5) << "(" << formatPctage(mpPct, 2) << "%)" << endl;
+  cout << left << setw(20) << "  Labs " << right << setw(5) << labScore << right  << setw(5) <<  "(" << formatPctage(labPct, 2) << "%)" << endl;
+  cout << left << setw(20) << "  Theory Quizzes " << right << setw(5) << theoryScore << right << setw(5) << "(" << formatPctage(theoryPct, 2) << "%)" << endl;
+  cout << left << setw(20) << "  Coding Quizzes " << right << setw(5) << programmingScore << right << setw(5) << "(" << formatPctage(programmingPct, 2) << "%)" << endl;
+  cout << left << setw(20) << "  Extra Credit " << right << setw(5) << student.getExtraCredit() << "    (----)" << endl;
+  cout << right << setw(20) << "  Current Total : " << student.calculateTotalPoints() << "\n" << endl;
 }
 
 /**
@@ -253,12 +252,12 @@ void printGradeInfo(Student student) {
  * @return desired final grade
  */
 int getFinalGradeDesired(Student &student) {
-  cout << "  ---- Grading Cutoffs ---- " << endl;
-  cout << left << "\t  0.  A-" << right << setw(10) << "900" << endl;
-  cout << left << "\t  1.  B-" << right << setw(10) << "800" << endl;
-  cout << left << "\t  2.  C-" << right << setw(10) << "700" << endl;
-  cout << left << "\t  3.  D-" << right << setw(10) << "600" << endl;
-  cout << left << "\t  4.  F" << right << setw(11) << "500" << endl;
+  cout << " ---- Grading Cutoffs ---- " << endl;
+  cout << left << "  0.  A-" << right << setw(10) << "900" << endl;
+  cout << left << "  1.  B-" << right << setw(10) << "800" << endl;
+  cout << left << "  2.  C-" << right << setw(10) << "700" << endl;
+  cout << left << "  3.  D-" << right << setw(10) << "600" << endl;
+  cout << left << "  4.  F" << right << setw(11) << "500" << endl;
 
   int input;
   cout << "Please enter your minimum desired final letter grade." << endl;
