@@ -26,11 +26,18 @@ string getFileContents(std::ifstream &File) {
   }
 }
 
+/**
+ * Prints splash screen and creator info
+ */
 void graphics::drawLaunchGraphic() {
   drawGraphicFromFile("/Users/alichtman/CLionProjects/CS225GradeCalculator/splash.txt");
   drawCreatorCredits();
 }
 
+/**
+ * Prints ASCII art from text file
+ * @param fileName
+ */
 void graphics::drawGraphicFromFile(std::string fileName) {
   ifstream reader(fileName);             //Open file
   string Art = getFileContents(reader);       //Get file
@@ -38,6 +45,9 @@ void graphics::drawGraphicFromFile(std::string fileName) {
   reader.close(); //close file
 }
 
+/**
+ * Prints out the creator info
+ */
 void graphics::drawCreatorCredits() {
   drawGraphicFromFile("/Users/alichtman/CLionProjects/CS225GradeCalculator/creator.txt");
 }
