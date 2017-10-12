@@ -30,7 +30,7 @@ string getFileContents(std::ifstream &File) {
  * Prints splash screen and creator info
  */
 void graphics::drawLaunchGraphic() {
-  drawGraphicFromFile("/Users/alichtman/CLionProjects/CS225GradeCalculator/splash.txt");
+  drawGraphicFromFile("splash.txt");
   drawCreatorCredits();
 }
 
@@ -49,7 +49,7 @@ void graphics::drawGraphicFromFile(std::string fileName) {
  * Prints out the creator info
  */
 void graphics::drawCreatorCredits() {
-  drawGraphicFromFile("/Users/alichtman/CLionProjects/CS225GradeCalculator/creator.txt");
+  drawGraphicFromFile("creator.txt");
 }
 
 

@@ -9,10 +9,10 @@ LDFLAGS = -std=c++1y -stdlib=libc++ -lpng -lc++abi -lpthread
 all : $(EXENAME)
 
 $(EXENAME) : $(OBJS)
-    $(LD) $(OBJS) $(LDFLAGS) -o $(EXENAME)
+	$(LD) $(OBJS) $(LDFLAGS) -o $(EXENAME)
 
 main.o : main.cpp graphics.h
-    $(CXX) $(CXXFLAGS) main.cpp
+	$(CXX) $(CXXFLAGS) main.cpp
 
 graphics.o : graphics.h graphics.cpp
-    $(CXX) $(CXXFLAGS) graphics.cpp
+	$(CXX) $(CXXFLAGS) graphics.cpp
