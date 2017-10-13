@@ -312,11 +312,7 @@ int getFinalGradeDesired(Student &student) {
  */
 double calculateFinalExamGradeNeeded(Student student, int desiredGradeCutoff) {
   double pointsSoFar = student.calculateTotalPoints();
-
-  if (pointsSoFar + 250 >= desiredGradeCutoff) {
-    return desiredGradeCutoff-pointsSoFar;
-  }
-  else return -1;
+  return desiredGradeCutoff - pointsSoFar;
 }
 
 int main() {
