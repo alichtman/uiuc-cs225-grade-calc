@@ -13,5 +13,3 @@ Calculate required final exam score needed to earn desired final grade for CS225
   `graphics.h`
   `graphics.cpp`
   `Makefile`
-  
-Written by: Aaron Lichtman
