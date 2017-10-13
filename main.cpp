@@ -334,7 +334,7 @@ int main() {
     cout << "\033[1;32mThis is do-able! Good luck!\033[0m" << endl;
   } else {
     cout
-        << "\033[1;31mUnfortunately this does not appear to be do-able. \nFor your sake, I hope there's a serious logic error in this code...\033[0m\n";
+        << "\033[1;31mUnfortunately this does not appear to be do-able. \nFor your sake, I hope there's a serious logic error in this code...\033[0m\n\n";
   }
 
   return 0;
