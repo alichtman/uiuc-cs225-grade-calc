@@ -1,4 +1,4 @@
-EXENAME = cs225GradeCalculator
+EXENAME = 225GradeCalc
 OBJS = main.o graphics.o
 
 CXX = clang++
