@@ -1,6 +1,7 @@
 #include <iostream>
 #include <iomanip>
 #include <complex>
+#include <sstream>
 #include "graphics.h"
 
 using namespace std;
@@ -134,73 +135,79 @@ void getGradeInformation(Student &pStudent) {
    */
 
   double nextInput;
-  cout << "MPs are worth 130 points in total. MP1 is worth 10 points, and all other MPs are worth 20." << endl;
-  cout << "How many points did you earn?" << endl;
+  cout
+      << "\033[1;32mThere are 130 points in the MP category. \nMP1 is worth 10 points. All other MPs are worth 20.\nHow many points did you earn?\033[0m\n";
   cin >> nextInput;
   while (nextInput > 130 || nextInput < 0) {
-    cout << "Invalid score -- try again." << endl;
+    cout << "\033[1;31mInvalid score -- enter a score between 0 and 130.\033[0m\n";
     cin >> nextInput;
   }
   pStudent.setMpTotal(nextInput);
   cout << endl;
 
-  cout << "Labs are scored out of 100 total points, anything earned over that is considered extra credit." << endl;
-  cout << "There are 14 labs, worth 10 points each, so 40 points of EC can be earned." << endl;
-  cout << "Enter your lab score without the extra credit. (We'll deal with EC later...)" << endl;
+  cout
+      << "\033[1;32mThere are 100 points in the Lab category.\nThere are 14 labs, each worth 10 points.\nAny points over 100 earned will be counted as extra credit.\nEnter your lab score, not counting extra credit.\033[0m\n";
   cin >> nextInput;
   while (nextInput > 100 || nextInput < 0) {
-    cout << "Invalid score -- try again." << endl;
+    cout << "\033[1;31mInvalid score -- enter a score between 0 and 100.\033[0m\n";
     cin >> nextInput;
   }
   pStudent.setLabTotal(nextInput);
   cout << endl;
 
-  cout << "Enter your theory exam score out of 280." << endl;
+  cout << "\033[1;32mEnter your theory exam score out of 280.\033[0m\n";
   cin >> nextInput;
   while (nextInput > 280 || nextInput < 0) {
-    cout << "Invalid score -- try again." << endl;
+    cout << "\033[1;31mInvalid score -- enter a score between 0 and 280.\033[0m\n";
     cin >> nextInput;
   }
   pStudent.setTheoryExamTotal(nextInput);
   cout << endl;
 
-  cout << "Enter your programming exam score out of 240." << endl;
+  cout << "\033[1;32mEnter your programming exam score out of 240.\033[0m\n";
   cin >> nextInput;
   while (nextInput > 240 || nextInput < 0) {
-    cout << "Invalid score -- try again." << endl;
+    cout << "\033[1;31mInvalid score -- enter a score between 0 and 240.\033[0m\n";
     cin >> nextInput;
   }
   pStudent.setProgrammingExamTotal(nextInput);
   cout << endl;
 
-  cout << "Enter your extra credit score, which is capped at 100 points." << endl;
-  cout << "This section is composed of MP Early Submission points, Lab extra credit, and POTD points." << endl;
-
   double mpBonusPoints;
-  cout << "How many MP early submission bonus points do you have?" << endl;
+  cout
+      << "\033[1;32mYour extra credit score is composed of MP Early Submission points, Lab extra credit, and POTD points.\nIt's capped at 100 points.\nHow many MP early submission bonus points do you have?\033[0m\n";
   cin >> mpBonusPoints;
   while (mpBonusPoints < 0 || mpBonusPoints > 91) {
-    cout << "MP bonus points are capped at 91. Enter a number between 0 and 91." << endl;
+    cout << "\033[1;31mMP bonus points are capped at 91. Enter a number between 0 and 91.\033[0m\n";
     cin >> mpBonusPoints;
   }
+  cout << endl;
 
   double labBonusPoints;
-  cout << "How much lab extra credit do you have? Any lab points earned over 100 overflow into this category." << endl;
+  cout
+      << "\033[1;32mHow much lab extra credit do you have?\nAny lab points earned over 100 overflow into this category.\033[0m\n";
   cin >> labBonusPoints;
   while (labBonusPoints < 0 || labBonusPoints > 40) {
-    cout << "Lab bonus points are capped at 40. Enter a number between 0 and 40." << endl;
+    cout << "\033[1;31mLab bonus points are capped at 40. Enter a number between 0 and 40.\033[0m\n";
     cin >> labBonusPoints;
   }
+  cout << endl;
 
   double potdBonusPoints;
-  cout << "How many POTDs have you completed? POTD points are capped at 40." << endl;
+  cout
+      << "\033[1;32mHow many POTDs have you completed?\nThe greatest number of points you can earn in this category is 40.\033[0m\n";
   cin >> potdBonusPoints;
   while (potdBonusPoints < 0 || potdBonusPoints > 40) {
-    cout << "POTD points are capped at 40. Enter a number between 0 and 40." << endl;
+    cout << "\033[1;31mPOTD points are capped at 40. Enter a number between 0 and 40.\033[0m\n";
     cin >> potdBonusPoints;
   }
+  cout << endl;
 
   double totalEc = mpBonusPoints + labBonusPoints + potdBonusPoints;
+
+  if (totalEc > 100) {
+    totalEc = 100;
+  }
 
   pStudent.setExtraCredit(totalEc);
   cout << endl;
@@ -210,13 +217,17 @@ void getGradeInformation(Student &pStudent) {
  * Function to set num of decimal places for x
  * CREDIT : https://stackoverflow.com/questions/1343890/rounding-number-to-2-decimal-places-in-c
  */
-double formatPctage(const double &x, const int &numDecimals) {
+string formatPctage(const double &x, const int &numDecimals) {
   int y = x;
-  double z= x-y;
-  double m=pow(10,numDecimals);
-  double q=z*m;
-  double r=round(q);
-  return static_cast<double>(y)+(1.0/m)*r;
+  double z = x - y;
+  double m = pow(10, numDecimals);
+  double q = z * m;
+  double r = round(q);
+
+  std::ostringstream strs;
+  strs << static_cast<double>(y) + (1.0 / m) * r;
+  std::string str = strs.str();
+  return str;
 }
 
 /**
@@ -237,37 +248,43 @@ void printGradeInfo(Student student) {
   double programmingScore = student.getProgrammingExamTotal();
   double programmingPct = 100 * programmingScore / 240;
 
-
-  cout << " -- Grading Information Entered -- " << endl;
-  cout << left << setw(20) << "  MPs " << right << setw(5) << mpScore << right << setw(5) << "(" << formatPctage(mpPct, 2) << "%)" << endl;
-  cout << left << setw(20) << "  Labs " << right << setw(5) << labScore << right  << setw(5) <<  "(" << formatPctage(labPct, 2) << "%)" << endl;
-  cout << left << setw(20) << "  Theory Quizzes " << right << setw(5) << theoryScore << right << setw(5) << "(" << formatPctage(theoryPct, 2) << "%)" << endl;
-  cout << left << setw(20) << "  Coding Quizzes " << right << setw(5) << programmingScore << right << setw(5) << "(" << formatPctage(programmingPct, 2) << "%)" << endl;
+  cout << "\033[1;32m -- Grading Information Entered -- \033[0m\n";
+  cout << left << setw(20) << "  MPs " << right << setw(5) << mpScore << right << setw(5) << "("
+       << formatPctage(mpPct, 2) << "%)" << endl;
+  cout << left << setw(20) << "  Labs " << right << setw(5) << labScore << right << setw(5) << "("
+       << formatPctage(labPct, 2) << "%)" << endl;
+  cout << left << setw(20) << "  Theory Quizzes " << right << setw(5) << theoryScore << right << setw(5) << "("
+       << formatPctage(theoryPct, 2) << "%)" << endl;
+  cout << left << setw(20) << "  Coding Quizzes " << right << setw(5) << programmingScore << right << setw(5) << "("
+       << formatPctage(programmingPct, 2) << "%)" << endl;
   cout << left << setw(20) << "  Extra Credit " << right << setw(5) << student.getExtraCredit() << "    (----)" << endl;
-  cout << right << setw(20) << "  Current Total : " << student.calculateTotalPoints() << "\n" << endl;
+  cout << right << setw(20) << "\033[1;33m  Current Total :      " << student.calculateTotalPoints() << "/1000"
+       << "\033[0m\n\n";
 }
 
-/**
+/*
  * Gets final grade cutoff
  * @return desired final grade
  */
 int getFinalGradeDesired(Student &student) {
-  cout << " ---- Grading Cutoffs ---- " << endl;
-  cout << left << "  0.  A-" << right << setw(10) << "900" << endl;
-  cout << left << "  1.  B-" << right << setw(10) << "800" << endl;
-  cout << left << "  2.  C-" << right << setw(10) << "700" << endl;
-  cout << left << "  3.  D-" << right << setw(10) << "600" << endl;
-  cout << left << "  4.  F" << right << setw(11) << "500" << endl;
+  cout << "\033[1;32m ---- Grading Cutoffs ---- \033[0m\n";
+  cout << left << "  0.  A-" << right << setw(10) << "900\n";
+  cout << left << "  1.  B-" << right << setw(10) << "800\n";
+  cout << left << "  2.  C-" << right << setw(10) << "700\n";
+  cout << left << "  3.  D-" << right << setw(10) << "600\n";
+  cout << left << "  4.  F" << right << setw(12) << "500\n\n";
 
   int input;
-  cout << "Please enter your minimum desired final letter grade." << endl;
-  cout << "Indicate the number on the left." << endl;
+  cout << "\033[1;32mPlease enter your minimum desired final letter grade.\033[0m\n";
+  cout << "\033[1;32mIndicate your choice by entering the respective index.\033[0m\n";
   cin >> input;
 
   while (input > 4 || input < 0) {
-    cout << "Invalid line number. Try again." << endl;
+    cout << "\033[1;31mInvalid line number. Try again.\033[0m\n";
     cin >> input;
   }
+
+  cout << endl;
 
   //Returns cutoff for grade level selected
   switch (input) {
@@ -280,9 +297,8 @@ int getFinalGradeDesired(Student &student) {
     case 3:student.setGradeDesired("D-");
       return 600;
     case 4:student.setGradeDesired("F");
-      cout << "Dude what" << endl;
-      return - 1;
-    default:cout << "Something has gone wrong." << endl;
+      return 500;
+    default:cout << "\033[1;31mThis line of code should never execute?\033[0m\n";
       return - 1;
   }
 }
@@ -297,13 +313,10 @@ int getFinalGradeDesired(Student &student) {
 double calculateFinalExamGradeNeeded(Student student, int desiredGradeCutoff) {
   double pointsSoFar = student.calculateTotalPoints();
 
-  for (int i = 0; i < 1100; i ++) {
-    if (pointsSoFar + i >= desiredGradeCutoff) {
-      return i;
-    }
+  if (pointsSoFar + 250 >= desiredGradeCutoff) {
+    return desiredGradeCutoff-pointsSoFar;
   }
-  cout << "This line of code should never execute?" << endl;
-  return - 1;
+  else return -1;
 }
 
 int main() {
@@ -318,15 +331,15 @@ int main() {
 
   double finalExamScoreNeeded = calculateFinalExamGradeNeeded(studentGrades, lowestGradeNeeded);
 
-  cout << "In order to earn a final grade of " << studentGrades.getGradeDesired() << "," << endl;
-  cout << "you need a raw final exam score of " << finalExamScoreNeeded << " out of 250." << endl;
+  cout << "\033[1;37mTo earn a final grade of " << studentGrades.getGradeDesired() << ", a final exam score of " <<
+       formatPctage(100 * finalExamScoreNeeded / 250, 3) << "% is needed.\033[0m\n";
 
   if (finalExamScoreNeeded < 250) {
-    cout << "This is do-able! Good luck!" << endl;
+    cout << "\033[1;32mThis is do-able! Good luck!\033[0m" << endl;
   } else {
     cout
-        << "Unfortunately this does not appear to be do-able. \nFor your sake, I hope there's a serious logic error in this code..."
-        << endl;
+        << "\033[1;31mUnfortunately this does not appear to be do-able. \nFor your sake, I hope there's a serious logic error in this code...\033[0m\n";
   }
+
   return 0;
 }
