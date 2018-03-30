@@ -1,4 +1,4 @@
-EXENAME = 225GradeCalc
+EXENAME = uiuc-cs225-grade-calc
 OBJS = main.o graphics.o
 
 CXX = clang++
